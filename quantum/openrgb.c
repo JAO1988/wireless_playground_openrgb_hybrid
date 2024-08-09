@@ -20,9 +20,11 @@
 
 #include "version.h"
 #include "quantum.h"
+#include "rgb_matrix.h"
 #include "openrgb.h"
 #include "raw_hid.h"
 #include "string.h"
+#include "keymap_introspection.h"
 #include <color.h>
 
 #if !defined(OPENRGB_DIRECT_MODE_STARTUP_RED)
@@ -293,10 +295,10 @@ void openrgb_get_led_info(uint8_t *data) {
         }
 
         if (col >= MATRIX_COLS || row >= MATRIX_ROWS) {
-            raw_hid_buffer[data_idx + 7] = KC_NO;
+            raw_hid_buffer[data_idx + 7] = 0; //KC_NO
         }
         else {
-            raw_hid_buffer[data_idx + 7] = 0;
+            raw_hid_buffer[data_idx + 7] = keycode_at_keymap_location_raw(0,row,col);
         }
     }
 }
