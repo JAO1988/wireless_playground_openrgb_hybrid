@@ -19,8 +19,9 @@
 #endif
 
 #include "version.h"
-#include "quantum.h"
 #include "rgb_matrix.h"
+#include "util.h"
+#include "quantum.h"
 #include "openrgb.h"
 #include "raw_hid.h"
 #include "string.h"
